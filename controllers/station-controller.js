@@ -1,5 +1,5 @@
 import { stationStore } from "../models/station-store.js";
-// import { trackStore } from "../models/track-store.js";
+import { reportStore } from "../models/report-store.js";
 
 export const stationController = {
   async index(request, response) {
@@ -11,17 +11,18 @@ export const stationController = {
     response.render("station-view", viewData);
   },
 
-  // async addTrack(request, response) {
-  //   const playlist = await playlistStore.getPlaylistById(request.params.id);
-  //   const newTrack = {
-  //     title: request.body.title,
-  //     artist: request.body.artist,
-  //     duration: Number(request.body.duration),
-  //   };
-  //   console.log(`adding track ${newTrack.title}`);
-  //   await trackStore.addTrack(playlist._id, newTrack);
-  //   response.redirect("/playlist/" + playlist._id);
-  // },
+  async addReport(request, response) {
+    const station = await stationStore.getStationById(request.params.id);
+    const newReport = {
+      code: Number(request.body.code),
+      temp: Number(request.body.temp),
+      windSpeed: Number(request.body.windSpeed),
+      windDirection: Number(request.body.windDirection),
+      pressure: Number(request.body.pressure),
+    };
+    await reportStore.addReport(station._id, newReport);
+    response.redirect("/station/" + station._id);
+  },
 
   // async deleteTrack(request, response) {
   //   const playlistId = request.params.playlistid;
