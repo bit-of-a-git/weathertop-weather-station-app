@@ -1,14 +1,5 @@
 {
   "file": "./models/reports.json",
   "reports": [
-    {
-      "code": 2,
-      "temp": 5,
-      "windSpeed": 2,
-      "windDirection": 2,
-      "pressure": 2,
-      "_id": "23fdf3d2-b615-4fe5-abbf-a7fce6683a5d",
-      "stationId": "4ad43cc8-b263-43bd-8f2b-e7c5d180e013"
-    }
   ]
 }
