@@ -23,10 +23,10 @@ export const reportStore = {
     return db.data.reports.filter((report) => report.stationId === id);
   },
 
-  // async getTrackById(id) {
-  //   await db.read();
-  //   return db.data.tracks.find((track) => track._id === id);
-  // },
+  async getReportById(id) {
+    await db.read();
+    return db.data.reports.find((report) => report._id === id);
+  },
 
   // async deleteTrack(id) {
   //   await db.read();
@@ -40,10 +40,12 @@ export const reportStore = {
   //   await db.write();
   // },
 
-  // async updateTrack(track, updatedTrack) {
-  //   track.title = updatedTrack.title;
-  //   track.artist = updatedTrack.artist;
-  //   track.duration = updatedTrack.duration;
-  //   await db.write();
-  // },
+  async updateReport(report, updatedReport) {
+    report.code = updatedReport.code;
+    report.temp = updatedReport.temp;
+    report.windSpeed = updatedReport.windSpeed;
+    report.windDirection = updatedReport.windDirection;
+    report.pressure = updatedReport.pressure;
+    await db.write();
+  },
 };
