@@ -24,11 +24,11 @@ export const stationController = {
     response.redirect("/station/" + station._id);
   },
 
-  // async deleteTrack(request, response) {
-  //   const playlistId = request.params.playlistid;
-  //   const trackId = request.params.trackid;
-  //   console.log(`Deleting Track ${trackId} from Playlist ${playlistId}`);
-  //   await trackStore.deleteTrack(request.params.trackId);
-  //   response.redirect("/playlist/" + playlistId);
-  // },
+  async deleteReport(request, response) {
+    const stationId = request.params.stationid;
+    const reportId = request.params.reportid;
+    console.log(`Deleting Report ${reportId} from Station ${stationId}`);
+    await reportStore.deleteReport(request.params.reportId);
+    response.redirect("/station/" + stationId);
+  },
 };

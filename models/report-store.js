@@ -28,12 +28,12 @@ export const reportStore = {
     return db.data.reports.find((report) => report._id === id);
   },
 
-  // async deleteTrack(id) {
-  //   await db.read();
-  //   const index = db.data.tracks.findIndex((track) => track._id === id);
-  //   db.data.tracks.splice(index, 1);
-  //   await db.write();
-  // },
+  async deleteReport(id) {
+    await db.read();
+    const index = db.data.reports.findIndex((report) => report._id === id);
+    db.data.reports.splice(index, 1);
+    await db.write();
+  },
 
   // async deleteAllTracks() {
   //   db.data.tracks = [];
