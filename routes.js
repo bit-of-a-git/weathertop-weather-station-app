@@ -1,5 +1,4 @@
 import express from "express";
-import { homeController } from "./controllers/home-controller.js";
 import { dashboardController } from "./controllers/dashboard-controller.js";
 import { aboutController } from "./controllers/about-controller.js";
 import { stationController } from "./controllers/station-controller.js";
@@ -16,6 +15,7 @@ router.post("/authenticate", accountController.authenticate);
 
 router.get("/dashboard", dashboardController.index);
 router.post("/dashboard/addstation", dashboardController.addStation);
+router.get("/delete-station/:id", dashboardController.deleteStation);
 router.get("/about", aboutController.index);
 router.get("/station/:id", stationController.index);
 router.post("/station/:id/addreport", stationController.addReport);

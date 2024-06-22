@@ -24,4 +24,11 @@ export const dashboardController = {
     await stationStore.addStation(newStation);
     response.redirect("/dashboard");
   },
+
+  async deleteStation(request, response) {
+    const StationId = request.params.id;
+    console.log(`Deleting Playlist ${StationId}`);
+    await stationStore.deleteStationById(StationId);
+    response.redirect("/dashboard");
+  },
 };
