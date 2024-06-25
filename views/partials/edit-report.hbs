@@ -1,3 +1,4 @@
+<form class="box" action="/station/{{station._id}}/updatereport/{{report._id}}" method="POST">
   <div class="field is-horizontal">
     <div class="field-body">
       <div class="field">
@@ -18,7 +19,29 @@
     <div class="field-body">
       <div class="field">
         <label class="label">Wind Direction</label>
-        <input class="input" type="number" min="0" max="360" placeholder="000deg" name="windDirection" required>
+        <div class="control">
+          <div class="select is-fullwidth">
+            <select name="windDirection" required>
+              <option value="" disabled selected>Select a direction</option>
+              <option value="N">N</option>
+              <option value="NNE">NNE</option>
+              <option value="NE">NE</option>
+              <option value="ENE">ENE</option>
+              <option value="E">E</option>
+              <option value="ESE">ESE</option>
+              <option value="SE">SE</option>
+              <option value="SSE">SSE</option>
+              <option value="S">S</option>
+              <option value="SSW">SSW</option>
+              <option value="SW">SW</option>
+              <option value="WSW">WSW</option>
+              <option value="W">W</option>
+              <option value="WNW">WNW</option>
+              <option value="NW">NW</option>
+              <option value="NNW">NNW</option>
+            </select>
+          </div>
+        </div>
       </div>
       <div class="field">
         <label class="label">Pressure</label>
@@ -27,3 +50,4 @@
     </div>
   </div>
   <button class="button is-primary">Update Track</button>
+</form>
