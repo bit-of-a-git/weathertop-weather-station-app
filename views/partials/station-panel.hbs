@@ -1,0 +1,110 @@
+<h2 class="title is-4">
+{{station.title}}
+</h2>
+<div class="columns">
+  <div class="column is-one-fifth">
+    <div class="box reading has-background-black has-text-white">
+      <div class="columns">
+        <div class="column is-two-thirds">
+          <div class="title has-text-white is-5">Location</div>
+        </div>
+        <div class="column">
+          <span class="icon is-large">
+            {{>icons/location}}
+          </span>
+        </div>
+      </div>
+      <div class="columns">
+        <div class="column">
+          <p>Lat: {{station.latitude}}</p>
+          <p>Long: {{station.longitude}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="column is-one-fifth">
+    <div class="box reading has-background-black has-text-white">
+      <div class="columns">
+        <div class="column is-two-thirds">
+          <div class="title has-text-white is-5">Weather</div>
+        </div>
+        <div class="column">
+          <span class="icon is-large">
+            {{>icons/rain}}
+          </span>
+        </div>
+      </div>
+      <div class="columns">
+        <div class="column">
+          <p>Current weather code</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="column is-one-fifth">
+    <div class="box reading has-background-black has-text-white">
+      <div class="columns">
+        <div class="column is-two-thirds">
+          <div class="title has-text-white is-5">Temp</div>
+        </div>
+        <div class="column">
+          <span class="icon is-large">
+            {{>icons/thermometer}}
+          </span>
+        </div>
+      </div>
+      <div class="columns">
+        <div class="column">
+          <p>Current °C</p>
+          <p>Current °F</p>
+          <p>Max: {{maxTemp}}°C</p>
+          <p>Min: {{minTemp}}°C</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="column is-one-fifth">
+    <div class="box reading has-background-black has-text-white">
+      <div class="columns">
+        <div class="column is-two-thirds">
+          <div class="title has-text-white is-5">Wind</div>
+          </div>
+        <div class="column">
+          <span class="icon is-large">
+            {{>icons/wind}}
+          </span>
+        </div>
+      </div>
+      <div class="columns">
+        <div class="column">
+          <p>(Beaufort) bft</p>
+          <p>Current wind direction</p>
+          <p>Feels like?</p>
+          <p>Max: {{maxWind}}km/h</p>
+          <p>Min: {{minWind}}km/h</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="column is-one-fifth">
+    <div class="box reading has-background-black has-text-white">
+      <div class="columns">
+        <div class="column is-two-thirds">
+          <div class="title has-text-white is-5">Pressure</div>
+          </div>
+        <div class="column">
+          <span class="icon is-large">
+            {{>icons/pressure}}
+          </span>
+        </div>
+      </div>
+      <div class="columns">
+        <div class="column">
+          <p>Current hpa</p>
+          <p>Min: {{maxPressure}} hpa</p>
+          <p>Max: {{minPressure}} hpa</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

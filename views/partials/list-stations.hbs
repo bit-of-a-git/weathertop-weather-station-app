@@ -3,13 +3,13 @@
   <h2 class="title">
     {{title}}
   </h2>
-    {{latitude}}
-    {{longitude}}
-  <a href="/station/{{_id}}" class="button is-small">
-  {{>icons/open}}
+  <p>Latitude: {{latitude}}</p>
+  <p>Longitude: {{longitude}}</p>
+  <a href="/station/{{_id}}" class="button is-small is-link" title="Add reports">
+    {{>icons/open}}
   </a>
-  <a href="/delete-station/{{_id}}" class="button is-small">
-  {{>icons/delete}}
+  <a href="/delete-station/{{_id}}" class="button is-small is-danger" title="Delete station">
+    {{>icons/delete}}
   </a>
 </div>
 {{/each}}

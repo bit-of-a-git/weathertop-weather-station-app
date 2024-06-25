@@ -1,9 +1,10 @@
 {{> menu}}
 
-<section class="section">
-  <div class="title">
-    {{station.title}}
-  </div>
-  {{> list-reports}}
-  {{> add-report}}
-</section>
+{{!-- <div class="title">
+  {{station.title}}
+</div> --}}
+<div class="box">
+  {{> station-panel}}
+</div>
+{{> list-reports}}
+{{> add-report}}
