@@ -50,4 +50,30 @@ export const stationAnalytics = {
     }
     return minWind;
   },
+
+  getMaxPressure(station) {
+    let maxPressure = null;
+    if (station.reports.length > 0) {
+      maxPressure = station.reports[0].pressure;
+      for (let i = 1; i < station.reports.length; i++) {
+        if (station.reports[i].pressure > maxPressure) {
+          maxPressure = station.reports[i].pressure;
+        }
+      }
+    }
+    return maxPressure;
+  },
+
+  getMinPressure(station) {
+    let minPressure = null;
+    if (station.reports.length > 0) {
+      minPressure = station.reports[0].pressure;
+      for (let i = 1; i < station.reports.length; i++) {
+        if (station.reports[i].pressure < minPressure) {
+          minPressure = station.reports[i].pressure;
+        }
+      }
+    }
+    return minPressure;
+  },
 }
