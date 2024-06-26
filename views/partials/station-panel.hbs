@@ -4,7 +4,7 @@
 <div class="columns">
   <div class="column is-one-fifth">
     <div class="box reading has-background-black has-text-white">
-      <div class="columns">
+      <div class="columns is-vcentered">
         <div class="column is-two-thirds">
           <div class="title has-text-white is-5">Location</div>
         </div>
@@ -24,26 +24,26 @@
   </div>
   <div class="column is-one-fifth">
     <div class="box reading has-background-black has-text-white">
-      <div class="columns">
+      <div class="columns is-vcentered">
         <div class="column is-two-thirds">
           <div class="title has-text-white is-5">Weather</div>
         </div>
         <div class="column">
           <span class="icon is-large">
-            {{>icons/rain}}
+            <img src={{weatherImage}}>
           </span>
         </div>
       </div>
       <div class="columns">
         <div class="column">
-          <p>Current weather code</p>
+          <p>{{weatherDescription}}</p>
         </div>
       </div>
     </div>
   </div>
   <div class="column is-one-fifth">
     <div class="box reading has-background-black has-text-white">
-      <div class="columns">
+      <div class="columns is-vcentered">
         <div class="column is-two-thirds">
           <div class="title has-text-white is-5">Temp</div>
         </div>
@@ -65,7 +65,7 @@
   </div>
   <div class="column is-one-fifth">
     <div class="box reading has-background-black has-text-white">
-      <div class="columns">
+      <div class="columns is-vcentered">
         <div class="column is-two-thirds">
           <div class="title has-text-white is-5">Wind</div>
           </div>
@@ -88,7 +88,7 @@
   </div>
   <div class="column is-one-fifth">
     <div class="box reading has-background-black has-text-white">
-      <div class="columns">
+      <div class="columns is-vcentered">
         <div class="column is-two-thirds">
           <div class="title has-text-white is-5">Pressure</div>
           </div>
