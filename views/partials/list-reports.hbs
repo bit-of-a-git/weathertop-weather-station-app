@@ -3,6 +3,7 @@
   <table class="table is-fullwidth is-bordered">
     <thead class="has-background-light">
       <tr>
+        <th>Date/Time</th>
         <th>Code</th>
         <th>Temp</th>
         <th>Wind Speed</th>
@@ -15,6 +16,9 @@
     <tbody>
       {{#each station.reports}}
       <tr>
+        <td>
+          {{timestamp}}
+        </td>
         <td>
           {{code}}
         </td>

@@ -2,6 +2,10 @@ import { stationStore } from "../models/station-store.js";
 import { reportStore } from "../models/report-store.js";
 import { stationAnalytics } from "../utils/station-analytics.js";
 import { conversions } from "../utils/conversions.js";
+import dayjs from "dayjs"
+// import dayjsPluginUTC from "dayjs-plugin-utc";
+
+// dayjs.extend(dayjsPluginUTC);
 
 export const stationController = {
   async index(request, response) {
@@ -33,6 +37,9 @@ export const stationController = {
 
   async addReport(request, response) {
     const station = await stationStore.getStationById(request.params.id);
+
+    const currentTime = dayjs().format('YYYY-MM-DD HH:MM:ss') ;
+    
     const newReport = {
       code: Number(request.body.code),
       temp: Number(request.body.temp),
@@ -40,6 +47,7 @@ export const stationController = {
       windDirection: request.body.windDirection,
       // windDirection: Number(request.body.windDirection),
       pressure: Number(request.body.pressure),
+      timestamp: currentTime,
     };
     await reportStore.addReport(station._id, newReport);
     response.redirect("/station/" + station._id);
