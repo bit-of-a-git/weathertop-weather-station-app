@@ -22,7 +22,7 @@ export const accountController = {
 
   signup(request, response) {
     const viewData = {
-      title: "Login to the Service",
+      title: "Sign up to WeatherTop",
     };
     response.render("signup-view", viewData);
   },
