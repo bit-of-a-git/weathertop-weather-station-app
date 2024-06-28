@@ -49,4 +49,64 @@ export const accountController = {
     const userEmail = request.cookies.weatherTop;
     return await userStore.getUserByEmail(userEmail);
   },
+
+  async editProfile(request, response) {
+    const user = await accountController.getLoggedInUser(request)
+    if (user) {
+      const viewData = {
+        user: user
+      };
+      response.render('edit-profile', viewData);
+    }
+    else {
+      response.redirect('login');
+    }
+  },
+
+  async updateName(request, response) {
+    const user = await accountController.getLoggedInUser(request)
+    if (user) {
+      userStore.updateName(user, request.body.firstName, request.body.lastName);
+      response.redirect('/edit-profile');
+    }
+    else {
+      response.redirect('/login');
+    }
+  },
+
+  async updateEmail(request, response) {
+    const user = await accountController.getLoggedInUser(request)
+    if (!user) {
+      response.redirect('/login');
+    }
+    else if (request.body.oldEmail === user.email) {
+      userStore.updateEmail(user, request.body.newEmail);
+      response.redirect('/edit-profile')
+    }
+    else {
+      console.log(`Previous email was incorrect.`);
+      response.redirect('/edit-profile')
+    }
+  },
+
+  async updatePassword(request, response) {
+    const user = await accountController.getLoggedInUser(request)
+    if (!user) {
+      response.redirect('/login');
+    }
+    else if (request.body.currentPassword === user.password) {
+      if (request.body.newPassword === request.body.confirmNewPassword) {
+        userStore.updatePassword(user, request.body.newPassword);
+        response.redirect('/edit-profile')
+      }
+      else {
+        console.log(`Error: password not updated. New password and confirm new password do not match.`);
+        response.redirect('/edit-profile')
+      }
+    }
+    else {
+      console.log(`Current password was incorrect.`);
+      response.redirect('/edit-profile')
+    }
+  },
 };

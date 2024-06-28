@@ -12,6 +12,10 @@ router.get("/signup", accountController.signup);
 router.get("/logout", accountController.logout);
 router.post("/register", accountController.register);
 router.post("/authenticate", accountController.authenticate);
+router.get("/edit-profile", accountController.editProfile);
+router.post("/edit-profile/update-name", accountController.updateName);
+router.post("/edit-profile/update-email", accountController.updateEmail);
+router.post("/edit-profile/update-password", accountController.updatePassword);
 
 router.get("/dashboard", dashboardController.index);
 router.post("/dashboard/addstation", dashboardController.addStation);
