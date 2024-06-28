@@ -39,7 +39,7 @@ export const conversions = {
       }
     }
   // Defaults to "clear" if no match found
-  return "https://openweathermap.org/img/wn/03d@2x.png";
+  return "13d";
   },
 }
 
@@ -63,15 +63,15 @@ const weatherCodeMap = {
 };
 
 const weatherImageMap = {
-  '200-299': 'https://openweathermap.org/img/wn/11d@2x.png',
-  '300-399': 'https://openweathermap.org/img/wn/09d@2x.png',
-  '500-510': 'https://openweathermap.org/img/wn/10d@2x.png',
-  '511-511': 'https://openweathermap.org/img/wn/13d@2x.png',
-  '520-599': 'https://openweathermap.org/img/wn/09d@2x.png',
-  '600-699': 'https://openweathermap.org/img/wn/13d@2x.png',
-  '701-701': 'https://openweathermap.org/img/wn/50d@2x.png',
-  '800-800': 'https://openweathermap.org/img/wn/01d@2x.png',
-  '801-801': 'https://openweathermap.org/img/wn/02d@2x.png',
-  '802-802': 'https://openweathermap.org/img/wn/03d@2x.png',
-  '803-804': 'https://openweathermap.org/img/wn/04d@2x.png',
+  '200-299': '11d',
+  '300-399': '09d',
+  '500-510': '10d',
+  '511-511': '13d',
+  '520-599': '09d',
+  '600-699': '13d',
+  '701-701': '50d',
+  '800-800': '01d',
+  '801-801': '02d',
+  '802-802': '03d',
+  '803-804': '04d',
 };

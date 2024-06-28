@@ -31,7 +31,7 @@ export const accountController = {
     const user = request.body;
     await userStore.addUser(user);
     console.log(`registering ${user.email}`);
-    response.redirect("/");
+    response.redirect("dashboard");
   },
 
   async authenticate(request, response) {
@@ -39,9 +39,10 @@ export const accountController = {
     if (user) {
       response.cookie("weatherTop", user.email);
       console.log(`logging in ${user.email}`);
-      response.redirect("/dashboard");
+      response.redirect("dashboard");
     } else {
-      response.redirect("/login");
+      console.log(`A user with email: ${request.body.email} was not found.`);
+      response.redirect("login");
     }
   },
 
