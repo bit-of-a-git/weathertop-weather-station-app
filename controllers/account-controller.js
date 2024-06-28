@@ -10,7 +10,7 @@ export const accountController = {
 
   login(request, response) {
     const viewData = {
-      title: "Login to the Service",
+      title: "Log in to WeatherTop",
     };
     response.render("login-view", viewData);
   },
