@@ -20,7 +20,7 @@ export const stationController = {
     const reports = await reportStore.getReportsByStationId(station._id);
     // const latestReading = reports.length > 0 ? reports.slice(-1)[0] : null;
 
-    const latestWeatherCode = reports.slice(-1)[0].code;
+    // const latestWeatherCode = reports.slice(-1)[0].code;
     
     const viewData = {
       title: "Station",
@@ -31,8 +31,8 @@ export const stationController = {
       minWind: minWind,
       maxPressure: maxPressure,
       minPressure: minPressure,
-      weatherDescription: conversions.weatherCodeToName(latestWeatherCode),
-      weatherImage: conversions.weatherCodeToImage(latestWeatherCode),
+      // weatherDescription: conversions.weatherCodeToName(latestWeatherCode),
+      // weatherImage: conversions.weatherCodeToImage(latestWeatherCode),
       // latestReading: latestReading,
       // currentFahrenheit: conversions.celsiusToFahrenheit(latestReading.temp),
       // windSpeedInBeaufort: conversions.windSpeedToBeaufort(latestReading.windSpeed),
