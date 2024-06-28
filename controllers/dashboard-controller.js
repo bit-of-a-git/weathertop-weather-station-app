@@ -4,9 +4,14 @@ import { accountController } from "./account-controller.js";
 export const dashboardController = {
   async index(request, response) {
     const loggedInUser = await accountController.getLoggedInUser(request);
+    const stations = await stationStore.getStationsByUserId(loggedInUser._id);
+
+    // https://www.freecodecamp.org/news/how-to-sort-array-of-objects-by-property-name-in-javascript/
+    stations.sort((a, b) => a.title.localeCompare(b.title));
+
     const viewData = {
       title: "Station Dashboard",
-      stations: await stationStore.getStationsByUserId(loggedInUser._id),
+      stations: stations,
     };
     console.log("dashboard rendering");
     response.render("dashboard-view", viewData);
