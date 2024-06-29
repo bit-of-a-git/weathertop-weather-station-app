@@ -46,8 +46,7 @@ export const stationController = {
       code: Number(request.body.code),
       temp: Number(request.body.temp),
       windSpeed: Number(request.body.windSpeed),
-      windDirection: request.body.windDirection,
-      // windDirection: Number(request.body.windDirection),
+      windDirection: Number(request.body.windDirection),
       pressure: Number(request.body.pressure),
       timestamp: currentTime,
     };
