@@ -3,9 +3,6 @@ import { reportStore } from "../models/report-store.js";
 import { stationAnalytics } from "../utils/station-analytics.js";
 import { conversions } from "../utils/conversions.js";
 import dayjs from "dayjs"
-// import dayjsPluginUTC from "dayjs-plugin-utc";
-
-// dayjs.extend(dayjsPluginUTC);
 
 export const stationController = {
   async index(request, response) {
@@ -62,7 +59,7 @@ export const stationController = {
     const stationId = request.params.stationid;
     const reportId = request.params.reportid;
     console.log(`Deleting Report ${reportId} from Station ${stationId}`);
-    await reportStore.deleteReport(request.params.reportId);
+    await reportStore.deleteReport(reportId);
     response.redirect("/station/" + stationId);
   },
 };

@@ -18,9 +18,9 @@ router.post("/edit-profile/update-email", accountController.updateEmail);
 router.post("/edit-profile/update-password", accountController.updatePassword);
 
 router.get("/dashboard", dashboardController.index);
-router.post("/dashboard/addstation", dashboardController.addStation);
+router.post("/dashboard/add-station", dashboardController.addStation);
 router.get("/delete-station/:id", dashboardController.deleteStation);
 router.get("/about", aboutController.index);
 router.get("/station/:id", stationController.index);
-router.post("/station/:id/addreport", stationController.addReport);
-router.get("/station/:stationid/deletereport/:reportid", stationController.deleteReport);
+router.post("/station/:id/add-report", stationController.addReport);
+router.get("/station/:stationid/delete-report/:reportid", stationController.deleteReport);
