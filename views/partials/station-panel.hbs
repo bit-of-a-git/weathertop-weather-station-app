@@ -1,5 +1,5 @@
 <h2 class="title is-4">
-{{station.title}}
+  {{title}}
 </h2>
 <div class="columns">
   <div class="column is-one-fifth">
@@ -16,8 +16,8 @@
       </div>
       <div class="columns">
         <div class="column">
-          <p>Lat: {{station.latitude}}</p>
-          <p>Long: {{station.longitude}}</p>
+          <p>Lat: {{latitude}}</p>
+          <p>Long: {{longitude}}</p>
         </div>
       </div>
     </div>
@@ -30,13 +30,17 @@
         </div>
         <div class="column">
           <span class="icon is-large">
-            <img src='https://openweathermap.org/img/wn/{{{weatherImage}}}@2x.png'>
+            {{#if latestReport.weatherImage}}
+            <img src='https://openweathermap.org/img/wn/{{{latestReport.weatherImage}}}@2x.png'>
+            {{else}}
+            {{>icons/weather-station}}
+            {{/if}}
           </span>
         </div>
       </div>
       <div class="columns">
         <div class="column">
-          <p>{{weatherDescription}}</p>
+          <p>{{latestReport.weatherDescription}}</p>
         </div>
       </div>
     </div>
@@ -55,10 +59,10 @@
       </div>
       <div class="columns">
         <div class="column">
-          <p>Current °C</p>
-          <p>Current °F</p>
-          <p>Max: {{maxTemp}}°C</p>
-          <p>Min: {{minTemp}}°C</p>
+          <p>Currently {{#if latestReport.currentCelsius}}
+          {{latestReport.currentCelsius}}°C/{{latestReport.currentFahrenheit}}°F</p>{{/if}}
+          <p>Max: {{#if analytics.maxTemp}}{{analytics.maxTemp}}°C</p>{{/if}}
+          <p>Min: {{#if analytics.minTemp}}{{analytics.minTemp}}°C</p>{{/if}}
         </div>
       </div>
     </div>
@@ -68,7 +72,7 @@
       <div class="columns is-vcentered">
         <div class="column is-two-thirds">
           <div class="title has-text-white is-5">Wind</div>
-          </div>
+        </div>
         <div class="column">
           <span class="icon is-large">
             {{>icons/wind}}
@@ -77,11 +81,17 @@
       </div>
       <div class="columns">
         <div class="column">
-          <p>(Beaufort) bft</p>
-          <p>Current wind direction</p>
+          {{#if latestReport.windSpeedInBeaufort}}
+          <p>{{latestReport.windSpeedInBeaufort}} bft</p>
+          {{/if}}
+          {{#if latestReport.windDirection}}
+          <p>{{latestReport.windDirection}}</p>
+          {{/if}}
+          {{#if feelsLike}}
           <p>Feels like?</p>
-          <p>Max: {{maxWind}}km/h</p>
-          <p>Min: {{minWind}}km/h</p>
+          {{/if}}
+          <p>Max: {{#if analytics.maxWind}}{{analytics.maxWind}}km/h</p>{{/if}}
+          <p>Min: {{#if analytics.minWind}}{{analytics.minWind}}km/h</p>{{/if}}
         </div>
       </div>
     </div>
@@ -91,7 +101,7 @@
       <div class="columns is-vcentered">
         <div class="column is-two-thirds">
           <div class="title has-text-white is-5">Pressure</div>
-          </div>
+        </div>
         <div class="column">
           <span class="icon is-large">
             {{>icons/pressure}}
@@ -100,9 +110,10 @@
       </div>
       <div class="columns">
         <div class="column">
-          <p>Current hpa</p>
-          <p>Min: {{maxPressure}} hpa</p>
-          <p>Max: {{minPressure}} hpa</p>
+          <p>Currently: {{#if latestReport.currentPressure}}
+            {{latestReport.currentPressure}} hpa</p>{{/if}}
+          <p>Max: {{#if analytics.maxPressure}}{{analytics.maxPressure}} hpa</p>{{/if}}
+          <p>Min: {{#if analytics.minPressure}}{{analytics.minPressure}} hpa</p>{{/if}}
         </div>
       </div>
     </div>

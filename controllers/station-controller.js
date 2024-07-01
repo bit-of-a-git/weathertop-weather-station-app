@@ -1,38 +1,24 @@
 import { stationStore } from "../models/station-store.js";
 import { reportStore } from "../models/report-store.js";
-import { stationAnalytics } from "../utils/station-analytics.js";
-import { conversions } from "../utils/conversions.js";
-import dayjs from "dayjs"
+import dayjs from "dayjs";
+import { DetailedReport } from "../models/detailed-report.js"
+import { StationAnalytics } from "../models/station-analytics.js";
 
 export const stationController = {
   async index(request, response) {
     const station = await stationStore.getStationById(request.params.id);
-    const maxTemp = stationAnalytics.getMaxTemp(station);
-    const minTemp = stationAnalytics.getMinTemp(station);
-    const maxWind = stationAnalytics.getMaxWind(station);
-    const minWind = stationAnalytics.getMinWind(station);
-    const maxPressure = stationAnalytics.getMaxPressure(station);
-    const minPressure = stationAnalytics.getMinPressure(station);
+    if (station.reports.length > 0) {
+      const lastReport = station.reports[station.reports.length - 1];
+      station.latestReport = new DetailedReport(lastReport);
+      station.analytics = new StationAnalytics(station);
+    }
+    else {
+      station.latestReport = null;
+    }
 
-    const reports = await reportStore.getReportsByStationId(station._id);
-    // const latestReading = reports.length > 0 ? reports.slice(-1)[0] : null;
-
-    // const latestWeatherCode = reports.slice(-1)[0].code;
-    
     const viewData = {
       title: "Station",
       station: station,
-      maxTemp: maxTemp,
-      minTemp: minTemp,
-      maxWind: maxWind,
-      minWind: minWind,
-      maxPressure: maxPressure,
-      minPressure: minPressure,
-      // weatherDescription: conversions.weatherCodeToName(latestWeatherCode),
-      // weatherImage: conversions.weatherCodeToImage(latestWeatherCode),
-      // latestReading: latestReading,
-      // currentFahrenheit: conversions.celsiusToFahrenheit(latestReading.temp),
-      // windSpeedInBeaufort: conversions.windSpeedToBeaufort(latestReading.windSpeed),
     };
     response.render("station-view", viewData);
   },
@@ -40,7 +26,7 @@ export const stationController = {
   async addReport(request, response) {
     const station = await stationStore.getStationById(request.params.id);
 
-    const currentTime = dayjs().format('YYYY-MM-DD HH:MM:ss') ;
+    const currentTime = dayjs().format('YYYY-MM-DD HH:MM:ss');
     
     const newReport = {
       code: Number(request.body.code),
