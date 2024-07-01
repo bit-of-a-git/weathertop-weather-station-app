@@ -35,8 +35,8 @@ export const reportStore = {
     await db.write();
   },
 
-  // async deleteAllTracks() {
-  //   db.data.tracks = [];
+  // async deleteAllReports() {
+  //   db.data.reports = [];
   //   await db.write();
   // },
 
