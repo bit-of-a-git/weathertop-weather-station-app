@@ -1,10 +1,23 @@
 import { stationStore } from "../models/station-store.js";
 import { accountController } from "./account-controller.js";
+import { DetailedReport } from "../models/detailed-report.js";
+import { StationAnalytics } from "../models/station-analytics.js";
 
 export const dashboardController = {
   async index(request, response) {
     const loggedInUser = await accountController.getLoggedInUser(request);
     const stations = await stationStore.getStationsByUserId(loggedInUser._id);
+
+    for (let station of stations) {
+      if (station.reports.length > 0) {
+        const lastReport = station.reports[station.reports.length - 1];
+        station.latestReport = new DetailedReport(lastReport);
+        station.analytics = new StationAnalytics(station);
+      }
+      else {
+        station.latestReport = null;
+      }
+    }
 
     // https://www.freecodecamp.org/news/how-to-sort-array-of-objects-by-property-name-in-javascript/
     stations.sort((a, b) => a.title.localeCompare(b.title));
