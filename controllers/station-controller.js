@@ -26,7 +26,7 @@ export const stationController = {
   async addReport(request, response) {
     const station = await stationStore.getStationById(request.params.id);
 
-    const currentTime = dayjs().format('YYYY-MM-DD HH:MM:ss');
+    const currentTime = dayjs().format('YYYY-MM-DD HH:mm:ss');
     
     const newReport = {
       code: Number(request.body.code),
