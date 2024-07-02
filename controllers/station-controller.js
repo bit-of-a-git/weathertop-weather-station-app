@@ -18,6 +18,7 @@ export const stationController = {
 
     const viewData = {
       title: "Station",
+      brandSubtitle: `${station.title} Weather Station`,
       station: station,
     };
     response.render("station-view", viewData);

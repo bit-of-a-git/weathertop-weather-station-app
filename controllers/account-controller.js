@@ -3,7 +3,7 @@ import { userStore } from "../models/user-store.js";
 export const accountController = {
   index(request, response) {
     const viewData = {
-      title: "Login or Signup",
+      title: "Log In/Sign Up",
     };
     response.render("index", viewData);
   },
@@ -55,6 +55,7 @@ export const accountController = {
     const user = await accountController.getLoggedInUser(request)
     if (user) {
       const viewData = {
+        title: "Edit Profile",
         user: user
       };
       response.render('edit-profile', viewData);

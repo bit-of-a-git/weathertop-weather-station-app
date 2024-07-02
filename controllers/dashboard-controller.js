@@ -23,7 +23,7 @@ export const dashboardController = {
     stations.sort((a, b) => a.title.localeCompare(b.title));
 
     const viewData = {
-      title: "Station Dashboard",
+      title: `${loggedInUser.firstName}'s Dashboard`,
       stations: stations,
     };
     console.log("dashboard rendering");
