@@ -10,8 +10,7 @@ export const dashboardController = {
 
     for (let station of stations) {
       if (station.reports.length > 0) {
-        const lastReport = station.reports[station.reports.length - 1];
-        station.latestReport = new DetailedReport(lastReport);
+        station.latestReport = station.reports[station.reports.length - 1];
         station.analytics = new StationAnalytics(station);
       }
       else {
