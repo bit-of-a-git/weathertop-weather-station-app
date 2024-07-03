@@ -57,3 +57,5 @@ public/img/*.txt
 public/img/*.eps
 
 notes.md
+
+.env

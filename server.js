@@ -5,6 +5,7 @@ import fileUpload from "express-fileupload";
 import { engine } from "express-handlebars";
 import { router } from "./routes.js";
 import { handlebarsHelpers } from "./helpers/handlebars-helpers.js";
+import 'dotenv/config'
 
 const app = express();
 app.use(cookieParser());

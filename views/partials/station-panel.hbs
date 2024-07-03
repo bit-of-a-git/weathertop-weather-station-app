@@ -59,10 +59,10 @@
       </div>
       <div class="columns">
         <div class="column">
-          <p>Currently {{#if latestReport.currentCelsius}}
-          {{latestReport.currentCelsius}}°C/{{latestReport.currentFahrenheit}}°F</p>{{/if}}
-          <p>Max: {{#if analytics.maxTemp}}{{analytics.maxTemp}}°C</p>{{/if}}
-          <p>Min: {{#if analytics.minTemp}}{{analytics.minTemp}}°C</p>{{/if}}
+          <p>Currently {{#if latestReport.temp}}
+          {{roundToOneDecimalPlace latestReport.temp}}°C/{{celsiusToFahrenheit latestReport.temp}}°F</p>{{/if}}
+          <p>Max: {{#if analytics.maxTemp}}{{roundToOneDecimalPlace analytics.maxTemp}}°C</p>{{/if}}
+          <p>Min: {{#if analytics.minTemp}}{{roundToOneDecimalPlace analytics.minTemp}}°C</p>{{/if}}
         </div>
       </div>
     </div>
@@ -81,17 +81,17 @@
       </div>
       <div class="columns">
         <div class="column">
-          {{#if latestReport.windSpeedInBeaufort}}
-          <p>{{latestReport.windSpeedInBeaufort}} bft</p>
+          {{#if latestReport.windSpeed}}
+          <p>{{windSpeedToBeaufort latestReport.windSpeed}} bft</p>
           {{/if}}
           {{#if latestReport.windDirection}}
-          <p>{{latestReport.windDirection}}</p>
+          <p>{{degreesToDirection latestReport.windDirection}}</p>
           {{/if}}
           {{#if feelsLike}}
           <p>Feels like?</p>
           {{/if}}
-          <p>Max: {{#if analytics.maxWind}}{{analytics.maxWind}}km/h</p>{{/if}}
-          <p>Min: {{#if analytics.minWind}}{{analytics.minWind}}km/h</p>{{/if}}
+          <p>Max: {{#if analytics.maxWind}}{{roundToOneDecimalPlace analytics.maxWind}}km/h</p>{{/if}}
+          <p>Min: {{#if analytics.minWind}}{{roundToOneDecimalPlace analytics.minWind}}km/h</p>{{/if}}
         </div>
       </div>
     </div>
@@ -110,8 +110,8 @@
       </div>
       <div class="columns">
         <div class="column">
-          <p>Currently: {{#if latestReport.currentPressure}}
-            {{latestReport.currentPressure}} hpa</p>{{/if}}
+          <p>Currently: {{#if latestReport.pressure}}
+            {{latestReport.pressure}} hpa</p>{{/if}}
           <p>Max: {{#if analytics.maxPressure}}{{analytics.maxPressure}} hpa</p>{{/if}}
           <p>Min: {{#if analytics.minPressure}}{{analytics.minPressure}} hpa</p>{{/if}}
         </div>
