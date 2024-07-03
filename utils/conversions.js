@@ -12,12 +12,12 @@ export const conversions = {
   return "Clear";
   },
 
-  weatherCodeToImage(weatherCode) {
-    for (const key in weatherImageMap) {
+  weatherCodeToIcon(weatherCode) {
+    for (const key in weatherIconMap) {
       // Gets the start and the end values by splitting the key using "-"
       const [start, end] = key.split("-").map(Number);
       if (start <= weatherCode && weatherCode <= end) {
-        return weatherImageMap[key];
+        return weatherIconMap[key];
       }
     }
   // Defaults to "clear" if no match found
@@ -56,7 +56,7 @@ const weatherCodeMap = {
   '801-804': 'Clouds'
 };
 
-const weatherImageMap = {
+const weatherIconMap = {
   '200-299': '11d',
   '300-399': '09d',
   '500-510': '10d',

@@ -37,7 +37,7 @@ export const stationController = {
       windDirection: Number(request.body.windDirection),
       pressure: Number(request.body.pressure),
       timestamp: currentTime,
-      weatherImage: conversions.weatherCodeToImage(request.body.code),
+      weatherIcon: conversions.weatherCodeToIcon(request.body.code),
       weatherDescription: conversions.weatherCodeToName(request.body.code),
     };
     await reportStore.addReport(station._id, newReport);
@@ -60,7 +60,7 @@ export const stationController = {
         windDirection: weatherData.wind.deg,
         pressure: weatherData.main.pressure,
         timestamp: weatherData.dt,
-        icon: weatherData.weather[0].icon,
+        weatherIcon: weatherData.weather[0].icon,
         weatherDescription: weatherData.weather[0].main,
       };
       reportStore.addReport(station._id, newReport);
