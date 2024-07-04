@@ -1,7 +1,6 @@
 import { stationStore } from "../models/station-store.js";
 import { reportStore } from "../models/report-store.js";
 import dayjs from "dayjs";
-import { DetailedReport } from "../models/detailed-report.js"
 import { StationAnalytics } from "../models/station-analytics.js";
 import axios from "axios";
 import { conversions } from "../utils/conversions.js";
@@ -62,6 +61,7 @@ export const stationController = {
         timestamp: weatherData.dt,
         weatherIcon: weatherData.weather[0].icon,
         weatherDescription: weatherData.weather[0].main,
+        feelsLike: weatherData.main.feels_like,
       };
       reportStore.addReport(station._id, newReport);
       response.redirect("/station/" + station._id);

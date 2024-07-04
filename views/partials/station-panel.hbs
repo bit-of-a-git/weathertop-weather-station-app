@@ -87,8 +87,8 @@
           {{#if latestReport.windDirection}}
           <p>{{degreesToDirection latestReport.windDirection}}</p>
           {{/if}}
-          {{#if feelsLike}}
-          <p>Feels like?</p>
+          {{#if latestReport.feelsLike}}
+          <p>Feels like {{roundToOneDecimalPlace latestReport.feelsLike}}°C</p>
           {{/if}}
           <p>Max: {{#if analytics.maxWind}}{{roundToOneDecimalPlace analytics.maxWind}}km/h</p>{{/if}}
           <p>Min: {{#if analytics.minWind}}{{roundToOneDecimalPlace analytics.minWind}}km/h</p>{{/if}}

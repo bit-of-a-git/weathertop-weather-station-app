@@ -1,6 +1,5 @@
 import { stationStore } from "../models/station-store.js";
 import { accountController } from "./account-controller.js";
-import { DetailedReport } from "../models/detailed-report.js";
 import { StationAnalytics } from "../models/station-analytics.js";
 
 export const dashboardController = {
