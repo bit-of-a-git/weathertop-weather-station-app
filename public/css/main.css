@@ -26,3 +26,7 @@ html, body {
   color: #ffffff;
   font-size: small;
 }
+
+.shadowless {
+  box-shadow: none;
+}
