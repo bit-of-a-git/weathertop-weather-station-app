@@ -10,12 +10,17 @@
   let marker;
   let markersGroup = new L.featureGroup();
 
-  {{#each stations}}
-    marker = L.marker([{{latitude}}, {{longitude}}]);
-    marker.bindPopup(`<b>{{title}}</b><br>Lat: {{latitude}}, Long: {{longitude}}`);
-    markersGroup.addLayer(marker);
-  {{/each}}
-
+  {{#if stations}}
+    {{#each stations}}
+      marker = L.marker([{{latitude}}, {{longitude}}]);
+      marker.bindPopup(`<b>{{title}}</b><br>Lat: {{latitude}}, Long: {{longitude}}`);
+      markersGroup.addLayer(marker);
+    {{/each}}
+    {{else}}
+      marker = L.marker([{{latitude}}, {{longitude}}]);
+      marker.bindPopup(`<b>{{title}}</b><br>Lat: {{latitude}}, Long: {{longitude}}`);
+      markersGroup.addLayer(marker);
+  {{/if}}
   markersGroup.addTo(map)
 
   map.fitBounds(markersGroup.getBounds(), {
