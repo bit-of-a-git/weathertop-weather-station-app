@@ -20,6 +20,8 @@ export const stationController = {
       title: "Station",
       brandSubtitle: `${station.title} Weather Station`,
       station: station,
+      titleLink: "/dashboard",
+      fiveDayForecast: fiveDayForecast.data,
     };
     response.render("station-view", viewData);
   },

@@ -56,7 +56,8 @@ export const accountController = {
     if (user) {
       const viewData = {
         title: "Edit Profile",
-        user: user
+        user: user,
+        titleLink: "/dashboard"
       };
       response.render('edit-profile', viewData);
     }

@@ -23,6 +23,7 @@ export const dashboardController = {
     const viewData = {
       title: `${loggedInUser.firstName}'s Dashboard`,
       stations: stations,
+      titleLink: "/dashboard"
     };
     console.log("dashboard rendering");
     response.render("dashboard-view", viewData);
