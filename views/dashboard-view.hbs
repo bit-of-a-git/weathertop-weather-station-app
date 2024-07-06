@@ -1,7 +1,9 @@
 {{> menu active="dashboard"}}
 
 {{> list-stations}}
-<div class="box" id="map"></div>
+{{#if stations}}
+  <div class="box" id="map"></div>
+{{/if}}
 {{> add-station}}
 <script>
   let map = L.map('map');

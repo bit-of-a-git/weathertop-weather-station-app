@@ -7,3 +7,8 @@ html, body {
 }
 
 #map { height: 50vh; }
+
+.graph-svg-tip > .title, .graph-svg-tip > .title > strong {
+  color: #ffffff;
+  font-size: small;
+}

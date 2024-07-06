@@ -11,11 +11,12 @@ export const stationController = {
     if (station.reports.length > 0) {
       station.latestReport = station.reports[station.reports.length - 1];
       station.analytics = new StationAnalytics(station);
-    }
-    else {
+    } else {
       station.latestReport = null;
     }
-
+    const fiveDayForecast = await axios.get(
+      `${process.env.WEATHER_URL}forecast?lat=${station.latitude}&lon=${station.longitude}&units=metric&appid=${process.env.API_KEY}`
+    );
     const viewData = {
       title: "Station",
       brandSubtitle: `${station.title} Weather Station`,
@@ -30,7 +31,7 @@ export const stationController = {
     const station = await stationStore.getStationById(request.params.id);
 
     const currentTime = dayjs().unix();
-    
+
     const newReport = {
       code: Number(request.body.code),
       temp: Number(request.body.temp),
@@ -47,14 +48,14 @@ export const stationController = {
 
   async generateReport(request, response) {
     const station = await stationStore.getStationById(request.params.id);
-    
-    await axios.get(
-      `${process.env.WEATHER_URL}weather?lat=${station.latitude}&lon=${station.longitude}&units=metric&appid=${process.env.API_KEY}`
-    )
-    .then(axiosResponse => {
-      const weatherData = axiosResponse.data;
 
-      const newReport = {        
+    const result = await axios.get(
+      `${process.env.WEATHER_URL}weather?lat=${station.latitude}&lon=${station.longitude}&units=metric&appid=${process.env.API_KEY}`
+    );
+    if (result.status == 200) {
+      const weatherData = result.data;
+
+      const newReport = {
         code: weatherData.weather[0].id,
         temp: weatherData.main.temp,
         windSpeed: weatherData.wind.speed,
@@ -67,11 +68,8 @@ export const stationController = {
       };
       reportStore.addReport(station._id, newReport);
       response.redirect("/station/" + station._id);
-    })
-      .catch(error => {
-        console.error(error);
-      });
-    },
+    }
+  },
 
   async deleteReport(request, response) {
     const stationId = request.params.stationid;

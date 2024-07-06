@@ -6,6 +6,9 @@
   {{/with}}
 </div>
 <div class="box" id="map"></div>
+<div class="box" id="chart"></div>
+<div class="box" id="chart2"></div>
+<div class="box" id="chart3"></div>
 {{> list-reports}}
 {{> add-report}}
 {{> generate-report}}
@@ -32,3 +35,36 @@
   });
 </script>
 {{/with}}
+<script>
+  const data = {
+    labels: [
+      {{#each fiveDayForecast.list}}
+        "{{dt_txt}}",
+      {{/each}}
+    ],
+    datasets: [
+      {
+        name: "Temperature", type: "line",
+        values: [
+          {{#each fiveDayForecast.list}}
+            {{main.temp}},
+          {{/each}}
+        ]
+      }
+    ]
+  }
+
+  const chart = new frappe.Chart("#chart", {
+    title: "Temperature Trend",
+    data: data,
+    type: "line",
+    height: 180,
+    colors: ["#AAD3DF"],
+    lineOptions: { dotSize: 5, regionFill: 1 },
+    axisOptions: {
+        xIsSeries: true,   //default:false
+        xAxisMode: "tick",
+        yAxisMode: "span"
+    },
+  });
+</script>
