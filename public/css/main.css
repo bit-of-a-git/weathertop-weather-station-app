@@ -8,6 +8,20 @@ html, body {
 
 #map { height: 50vh; }
 
+.table {
+  table-layout: fixed;
+}
+
+.box .table th {
+  text-align: center; /* Centers the text horizontally */
+  vertical-align: middle; /* Centers text vertically */
+}
+
+.box .table td {
+  text-align: center; /* Centers text horizontally */
+  vertical-align: middle; /* Centers text vertically */
+}
+
 .graph-svg-tip > .title, .graph-svg-tip > .title > strong {
   color: #ffffff;
   font-size: small;
