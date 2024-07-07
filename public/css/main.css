@@ -34,3 +34,7 @@ html, body {
 text.title {
   font-size: larger;
 }
+
+#map {
+  position: sticky;
+}
