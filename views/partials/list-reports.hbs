@@ -14,9 +14,9 @@
         </tr>
       </thead>
       <tbody>
-        {{#each (reverseArray station.reports)}}
+        {{#each station.reports}}
           <tr>
-            <td>{{unixTimeToStandard timestamp}}</td>
+            <td>{{convertUnixTimeToStandard timestamp}}</td>
             <td>{{code}}</td>
             <td>{{temp}}</td>
             <td>{{windSpeed}}</td>

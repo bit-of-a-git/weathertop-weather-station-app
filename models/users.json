@@ -1,5 +1,12 @@
 {
   "file": "./models/users.json",
   "users": [
+    {
+      "firstName": "Guy",
+      "lastName": "Incognito",
+      "email": "that@dog.has",
+      "password": "aPuffyTail",
+      "_id": "1906a8ce-36e9-4bc4-b0cb-331d723cd320"
+    }
   ]
 }

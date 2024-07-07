@@ -1,11 +1,7 @@
 import dayjs from "dayjs";
 
 export const handlebarsHelpers = {
-  reverseArray: function(array) {
-    return array.slice().reverse();
-  },
-
-  unixTimeToStandard: function(unixTime) {
+  convertUnixTimeToStandard: function(unixTime) {
     const standardTime = dayjs.unix(unixTime);
     return standardTime.format("YYYY-MM-DD HH:mm:ss");
   },
@@ -15,12 +11,12 @@ export const handlebarsHelpers = {
   },
 
   // https://www.w3resource.com/javascript-exercises/javascript-basic-exercise-11.php
-  celsiusToFahrenheit(celsius) {
+  convertCelsiusToFahrenheit(celsius) {
     let fahrenheit = celsius * 9 / 5 + 32;
     return Number(fahrenheit.toFixed(1));
   },
 
-  windSpeedToBeaufort(windSpeed) {
+  convertWindSpeedToBeaufort(windSpeed) {
     const thresholds = [0, 1, 7, 12, 20, 30, 40, 51, 63, 76, 88, 103, 118];
     for (let i = 0; i < thresholds.length; i++) {
       if (windSpeed < thresholds[i]) {
@@ -30,7 +26,7 @@ export const handlebarsHelpers = {
     return thresholds.length;
   },
 
-  degreesToDirection(degrees) {
+  convertDegreesToDirection(degrees) {
     for (const key in degreeDirectionMap) {
       // Gets the start and the end values by splitting the key using "-"
       const [start, end] = key.split("-").map(Number);

@@ -1,5 +1,26 @@
 {
   "file": "./models/stations.json",
   "stations": [
+    {
+      "title": "Galway",
+      "latitude": 53.274,
+      "longitude": -9.0513,
+      "userid": "1906a8ce-36e9-4bc4-b0cb-331d723cd320",
+      "_id": "fbec86a2-3571-4928-8624-793b3bb517b4"
+    },
+    {
+      "title": "Besançon",
+      "latitude": 47.240002,
+      "longitude": 6.02,
+      "userid": "1906a8ce-36e9-4bc4-b0cb-331d723cd320",
+      "_id": "1c0098d6-1a34-4034-8e56-c8a56470095c"
+    },
+    {
+      "title": "Lisbon",
+      "latitude": 38.736946,
+      "longitude": -9.142685,
+      "userid": "1906a8ce-36e9-4bc4-b0cb-331d723cd320",
+      "_id": "7aae9677-b45e-466c-ab17-a20b872b8540"
+    }
   ]
 }

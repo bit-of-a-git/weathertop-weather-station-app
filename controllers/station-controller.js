@@ -8,12 +8,15 @@ import { conversions } from "../utils/conversions.js";
 export const stationController = {
   async index(request, response) {
     const station = await stationStore.getStationById(request.params.id);
+    
     if (station.reports.length > 0) {
+      station.reports.sort((a, b) => b.timestamp - a.timestamp);
       station.latestReport = station.reports[station.reports.length - 1];
       station.analytics = new StationAnalytics(station);
     } else {
       station.latestReport = null;
     }
+
     const fiveDayForecast = await axios.get(
       `${process.env.WEATHER_URL}forecast?lat=${station.latitude}&lon=${station.longitude}&units=metric&appid=${process.env.API_KEY}`
     );
@@ -22,7 +25,10 @@ export const stationController = {
       brandSubtitle: `${station.title} Weather Station`,
       station: station,
       titleLink: "/dashboard",
-      fiveDayForecast: fiveDayForecast.data,
+      labels: fiveDayForecast.data.list.map(forecast => forecast.dt_txt),
+      temps: fiveDayForecast.data.list.map(forecast => forecast.main.temp),
+      humidities: fiveDayForecast.data.list.map(forecast => forecast.main.humidity),
+      winds: fiveDayForecast.data.list.map(forecast => forecast.wind.speed),
     };
     response.render("station-view", viewData);
   },
@@ -30,6 +36,7 @@ export const stationController = {
   async addReport(request, response) {
     const station = await stationStore.getStationById(request.params.id);
 
+    // Decided to fetch time as epoch time as the API also returns it this way
     const currentTime = dayjs().unix();
 
     const newReport = {

@@ -43,9 +43,9 @@ export const dashboardController = {
   },
 
   async deleteStation(request, response) {
-    const StationId = request.params.id;
-    console.log(`Deleting Station ${StationId}`);
-    await stationStore.deleteStationById(StationId);
+    const stationId = request.params.id;
+    console.log(`Deleting Station ${stationId}`);
+    await stationStore.deleteStationById(stationId);
     response.redirect("/dashboard");
   },
 };

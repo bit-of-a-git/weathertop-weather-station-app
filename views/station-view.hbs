@@ -3,73 +3,17 @@
 <div class="box">
   {{#with station}}
     {{> station-panel}}
+</div>
     {{> station-map}}
     {{> map-markers}}
     {{> add-fit-markers}}
   {{/with}}
-</div>
-<div class="box" id="map"></div>
 <div class="box">
-<div class="box shadowless" id="chart1"></div>
-<div class="box shadowless" id="chart2"></div>
-<div class="box shadowless" id="chart3"></div>
+  <div class="title is-4">Five-Day Trends</div>
+  {{> chart id="temp-chart" name="Temperature" labels=labels values=temps colour="#E74C3C"}}
+  {{> chart id="humidity-chart" name="Humidity" labels=labels values=humidities colour="#3498DB"}}
+  {{> chart id="wind-chart" name="Wind" labels=labels values=winds colour="#2ECC71"}}
 </div>
 {{> list-reports}}
 {{> add-report}}
 {{> generate-report}}
-
-{{#with station}}
-<script>
-  let map = L.map('map');
-  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
-    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-  }).addTo(map);
-
-  let marker;
-  let markersGroup = new L.featureGroup();
-
-  marker = L.marker([{{latitude}}, {{longitude}}]);
-  marker.bindPopup(`<b>{{title}}</b><br>Lat: {{latitude}}, Long: {{longitude}}`);
-  markersGroup.addLayer(marker);
-
-  markersGroup.addTo(map)
-
-  map.fitBounds(markersGroup.getBounds(), {
-    maxZoom: 10
-  });
-</script>
-{{/with}}
-<script>
-  const data = {
-    labels: [
-      {{#each fiveDayForecast.list}}
-        "{{dt_txt}}",
-      {{/each}}
-    ],
-    datasets: [
-      {
-        name: "Temperature", type: "line",
-        values: [
-          {{#each fiveDayForecast.list}}
-            {{main.temp}},
-          {{/each}}
-        ]
-      }
-    ]
-  }
-
-  const chart = new frappe.Chart("#chart1", {
-    title: "Temperature Trend",
-    data: data,
-    type: "line",
-    height: 180,
-    colors: ["#AAD3DF"],
-    lineOptions: { dotSize: 5, regionFill: 1 },
-    axisOptions: {
-        xIsSeries: true,   //default:false
-        xAxisMode: "tick",
-        yAxisMode: "span"
-    },
-  });
-</script>

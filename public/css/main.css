@@ -30,3 +30,7 @@ html, body {
 .shadowless {
   box-shadow: none;
 }
+
+text.title {
+  font-size: larger;
+}

@@ -23,18 +23,6 @@ export const conversions = {
   // Defaults to "clear" if no match found
   return "13d";
   },
-
-  degreesToDirection(degrees) {
-    for (const key in degreeDirectionMap) {
-      // Gets the start and the end values by splitting the key using "-"
-      const [start, end] = key.split("-").map(Number);
-      if (start <= degrees && degrees <= end) {
-        return degreeDirectionMap[key];
-      }
-    }
-  // Defaults to "N" if no match found
-  return "N";
-  },
 }
 
 const weatherCodeMap = {
@@ -68,24 +56,4 @@ const weatherIconMap = {
   '801-801': '02d',
   '802-802': '03d',
   '803-804': '04d',
-};
-
-const degreeDirectionMap = {
-  "348.75-360": "N",
-  "0-11.25": "N",
-  "11.25-33.75": "NNE",
-  "33.75-56.25": "NE",
-  "56.25-78.75": "ENE",
-  "78.75-101.25": "E",
-  "101.25-123.75": "ESE",
-  "123.75-146.25": "SE",
-  "146.25-168.75": "SSE",
-  "168.75-191.25": "S",
-  "191.25-213.75": "SSW",
-  "213.75-236.25": "SW",
-  "236.25-258.75": "WSW",
-  "258.75-281.25": "W",
-  "281.25-303.75": "WNW",
-  "303.75-326.25": "NW",
-  "326.25-348.75": "NNW"
 };

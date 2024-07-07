@@ -60,7 +60,7 @@
       <div class="columns">
         <div class="column">
           <p>Currently {{#if latestReport.temp}}
-          {{roundToOneDecimalPlace latestReport.temp}}°C/{{celsiusToFahrenheit latestReport.temp}}°F</p>{{/if}}
+          {{roundToOneDecimalPlace latestReport.temp}}°C/{{convertCelsiusToFahrenheit latestReport.temp}}°F</p>{{/if}}
           <p>Max: {{#if analytics.maxTemp}}{{roundToOneDecimalPlace analytics.maxTemp}}°C</p>{{/if}}
           <p>Min: {{#if analytics.minTemp}}{{roundToOneDecimalPlace analytics.minTemp}}°C</p>{{/if}}
         </div>
@@ -82,10 +82,10 @@
       <div class="columns">
         <div class="column">
           {{#if latestReport.windSpeed}}
-          <p>{{windSpeedToBeaufort latestReport.windSpeed}} bft</p>
+          <p>{{convertWindSpeedToBeaufort latestReport.windSpeed}} bft</p>
           {{/if}}
           {{#if latestReport.windDirection}}
-          <p>{{degreesToDirection latestReport.windDirection}}</p>
+          <p>{{convertDegreesToDirection latestReport.windDirection}}</p>
           {{/if}}
           {{#if latestReport.feelsLike}}
           <p>Feels like {{roundToOneDecimalPlace latestReport.feelsLike}}°C</p>
