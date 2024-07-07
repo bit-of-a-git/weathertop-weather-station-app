@@ -1,0 +1,5 @@
+<script>
+marker = L.marker([{{latitude}}, {{longitude}}]);
+marker.bindPopup(`<b>{{title}}</b><br>Lat: {{latitude}}, Long: {{longitude}}`);
+markersGroup.addLayer(marker);
+</script>

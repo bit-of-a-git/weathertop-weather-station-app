@@ -3,5 +3,9 @@
 {{#if stations}}
   {{> list-stations}}
   {{> station-map}}
+  {{#each stations}}
+    {{> map-markers}}
+  {{/each}}
+  {{> add-fit-markers}}
 {{/if}}
 {{> add-station}}
