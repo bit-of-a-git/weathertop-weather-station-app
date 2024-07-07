@@ -5,8 +5,8 @@
   <a href="/station/{{_id}}" class="button is-small is-link" title="Add reports">
     {{>icons/open}}
   </a>
-  <a href="/delete-station/{{_id}}" class="button is-small is-danger" title="Delete station">
-    {{>icons/delete}}
-  </a>
+  {{> modal-button}}
 </div>
 {{/each}}
+
+{{> modal-script}}
