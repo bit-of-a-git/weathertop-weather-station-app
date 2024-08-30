@@ -14,7 +14,7 @@ app.use(express.static("public"));
 app.use(fileUpload());
 app.engine(".hbs", engine({ 
   extname: ".hbs",
-  helpers: handlebarsHelpers }));
+  helpers: handlebarsHelpers })); // https://stackoverflow.com/questions/38661295/node-express-handlebars-where-to-define-custom-helpers
 app.set("view engine", ".hbs");
 app.set("views", "./views");
 app.use("/", router);

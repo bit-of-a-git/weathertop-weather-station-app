@@ -6,6 +6,7 @@ export const handlebarsHelpers = {
     return standardTime.format("YYYY-MM-DD HH:mm:ss");
   },
 
+  // https://stackoverflow.com/questions/7342957/how-do-you-round-to-one-decimal-place-in-javascript
   roundToOneDecimalPlace: function(number) {
     return Math.round(number * 10) / 10
   },
@@ -16,6 +17,7 @@ export const handlebarsHelpers = {
     return Number(fahrenheit.toFixed(1));
   },
 
+  // https://stackoverflow.com/questions/8128911/quantized-level-method
   convertWindSpeedToBeaufort(windSpeed) {
     const thresholds = [0, 1, 7, 12, 20, 30, 40, 51, 63, 76, 88, 103, 118];
     for (let i = 0; i < thresholds.length; i++) {
@@ -26,6 +28,7 @@ export const handlebarsHelpers = {
     return thresholds.length;
   },
 
+  // https://github.com/bit-of-a-git/whether-weather-app/blob/main/js/utilities/getImageSource.js
   convertDegreesToDirection(degrees) {
     for (const key in degreeDirectionMap) {
       // Gets the start and the end values by splitting the key using "-"

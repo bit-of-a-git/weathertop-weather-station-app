@@ -1,5 +1,7 @@
 <script>
-marker = L.marker([{{latitude}}, {{longitude}}]);
-marker.bindPopup(`<b>{{title}}</b><br>Lat: {{latitude}}, Long: {{longitude}}`);
-markersGroup.addLayer(marker);
+  // https://stackoverflow.com/questions/16845614/zoom-to-fit-all-markers-in-mapbox-or-leaflet
+  marker = L.marker([{{latitude}}, {{longitude}}]);
+  marker.bindPopup(`<b>{{title}}</b><br>Lat: {{latitude}}, Long: {{longitude}}<br>
+  {{#if latestReport.temp}}Currently {{roundToOneDecimalPlace latestReport.temp}}°C{{/if}}`);
+  markersGroup.addLayer(marker);
 </script>

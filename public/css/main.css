@@ -2,6 +2,7 @@
   height: 100%;
 }
 
+/* https://stackoverflow.com/questions/17555682/height-100-or-min-height-100-for-html-and-body-elements */
 html, body {
   min-height: 100vh;
 }
@@ -13,8 +14,8 @@ html, body {
 }
 
 .box .table th {
-  text-align: center; /* Centers the text horizontally */
-  vertical-align: middle; /* Centers text vertically */
+  text-align: center;
+  vertical-align: middle;
 }
 
 .box .table td {

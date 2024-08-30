@@ -10,7 +10,9 @@ export const stationController = {
     const station = await stationStore.getStationById(request.params.id);
     
     if (station.reports.length > 0) {
+      // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
       station.reports.sort((a, b) => b.timestamp - a.timestamp);
+
       station.latestReport = station.reports[station.reports.length - 1];
       station.analytics = new StationAnalytics(station);
     } else {
@@ -25,6 +27,8 @@ export const stationController = {
       brandSubtitle: `${station.title} Weather Station`,
       station: station,
       titleLink: "/dashboard",
+      
+      // https://dev.to/rthefounding/using-the-map-method-to-extract-data-from-an-array-h5k
       labels: fiveDayForecast.data.list.map(forecast => forecast.dt_txt),
       temps: fiveDayForecast.data.list.map(forecast => forecast.main.temp),
       humidities: fiveDayForecast.data.list.map(forecast => forecast.main.humidity),

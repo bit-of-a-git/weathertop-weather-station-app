@@ -1,5 +1,6 @@
 export const conversions = {
 
+  // https://github.com/bit-of-a-git/whether-weather-app/blob/main/js/utilities/getImageSource.js
   weatherCodeToName(weatherCode) {
     for (const key in weatherCodeMap) {
       // Gets the start and the end values by splitting the key using "-"
