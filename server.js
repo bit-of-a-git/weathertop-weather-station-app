@@ -4,12 +4,15 @@ import cookieParser from "cookie-parser";
 import fileUpload from "express-fileupload";
 import { engine } from "express-handlebars";
 import { router } from "./routes.js";
+// This allows custom Handlebars functions to be used
 import { handlebarsHelpers } from "./helpers/handlebars-helpers.js";
+// Dotenv allows variables to be fetched from a .env file
 import 'dotenv/config'
 
 const app = express();
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: false }));
+// This allows static resources to be served from the "public" folder
 app.use(express.static("public"));
 app.use(fileUpload());
 app.engine(".hbs", engine({ 
